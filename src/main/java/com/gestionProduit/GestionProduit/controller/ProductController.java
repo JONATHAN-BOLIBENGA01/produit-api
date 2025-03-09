@@ -17,9 +17,15 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/hello")
-    public String getHello(){
-        return "hello spring boot !";
+    @PostMapping
+    public Product createProduct(@RequestBody Product product){
+        return productService.createProduct(product);
+    }
+
+    @GetMapping("{id}")
+    public Product getProductById(@PathVariable long id) /*PathVariable pour dire que c'est une variable passer au niveau de l'url */
+    {
+        return productService.getProductById(id);
     }
 
     @GetMapping("/all")
@@ -27,8 +33,16 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @PostMapping
-    public Product createProduct(@RequestBody Product product){
-        return productService.createProduct(product);
+
+    @PutMapping("{id}")
+    public Product editProduct(@PathVariable long id, @RequestBody Product product){
+        return productService.editProduct(id, product);
     }
+
+
+    @DeleteMapping("{id}")
+    public String deleteProductById(@PathVariable("id") long idProduct) {
+        return productService.deleteProductById(idProduct);
+    }
+
 }
