@@ -1,6 +1,7 @@
 package com.gestionProduit.GestionProduit.services;
 
 import com.gestionProduit.GestionProduit.model.Product;
+import com.gestionProduit.GestionProduit.productExceptions.ProductNotFoundException;
 import com.gestionProduit.GestionProduit.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,8 @@ public class ProductService {
     public Product getProductById(long id) {
         Optional<Product> optionalProduct = productRepository.findById(id);
 
-        if (optionalProduct.isEmpty()) throw new RuntimeException("Desole produit inexistant !");
+        if (optionalProduct.isEmpty()) throw new  ProductNotFoundException("produit inexistant");
+
         return optionalProduct.get(); // pour recuper et retourner le produit s'il est present
     }
 

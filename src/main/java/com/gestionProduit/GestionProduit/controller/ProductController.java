@@ -3,7 +3,6 @@ package com.gestionProduit.GestionProduit.controller;
 import com.gestionProduit.GestionProduit.model.Product;
 import com.gestionProduit.GestionProduit.services.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
